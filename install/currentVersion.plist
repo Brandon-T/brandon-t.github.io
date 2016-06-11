@@ -17,13 +17,13 @@
 					<key>kind</key>
 					<string>display-image</string>
 					<key>url</key>
-					<string>https://brandon-t.github.io/install/small.png</string>
+					<string>https://brandon-t.github.io/images/small.png</string>
 				</dict>
 				<dict>
 					<key>kind</key>
 					<string>full-size-image</string>
 					<key>url</key>
-					<string>https://brandon-t.github.io/install/full.png</string>
+					<string>https://brandon-t.github.io/images/full.png</string>
 				</dict>
 			</array>
 			<key>metadata</key>
