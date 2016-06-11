@@ -3,6 +3,9 @@
 		<title>
 			Soccer Pool
 		</title>
+
+		<script src="http://code.jquery.com/jquery.mobile-1.4.5.js"></script>
+
 		<style>
 			.cn {
 			  display: table-cell;
@@ -54,9 +57,9 @@
 
 
 		<br /><br />
-		<form>
+		<form id="frm" method="get" action="itms-services://?action=download-manifest&url=https://brandon-t.github.io/install/manifest.plist>
 			<label for="downloadBtn" style="color:white">Euro-Cup v1.0.5</label>
-		    <button id="downloadBtn" formaction="itms-services://?action=download-manifest&url=https://brandon-t.github.io/install/manifest.plist">Download</button>
+		    <button id="downloadBtn" type="submit">Download</button>
 		</form>
 
 
