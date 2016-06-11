@@ -2,8 +2,8 @@
 
 A web-page configured for iOS Over-The-Air application installation of the EuroCup SoccerPool application.
 
-<img src="/screenshots/Login.png" width="320" height="480" alt=""Login.png" /> ![Alt text](/screenshots/Standings.png?raw=true "Standings.png")
+<img src="/screenshots/Login.png" width="320" height="480" alt="Login.png" /> <img src="/screenshots/Standings.png" width="320" height="480" alt="Standings.png" />
 
-![Alt text](/screenshots/Standings-Completed.png?raw=true "Standings-Completed.png") ![Alt text](/screenshots/Help.png?raw=true "Help.png")
+<img src="/screenshots/Standings-Completed.png" width="320" height="480" alt="Standings-Completed.png" /> <img src="/screenshots/Help.png" width="320" height="480" alt="Help.png" />
 
-![Alt text](/screenshots/Graph.png?raw=true "Graph.png") ![Alt text](/screenshots/Graph-More.png?raw=true "Login.png")
+<img src="/screenshots/Graph.png" width="320" height="480" alt="Graph.png" /> <img src="/screenshots/Graph-More.png" width="320" height="480" alt="Graph-More.png" />
