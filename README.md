@@ -2,7 +2,7 @@
 
 A web-page configured for iOS Over-The-Air application installation of the EuroCup SoccerPool application.
 
-![Alt text](/screenshots/Login.png?raw=true =100x20 "Login.png") ![Alt text](/screenshots/Standings.png?raw=true "Standings.png")
+<img src="/screenshots/Login.png" width="320" height="480" alt=""Login.png" /> ![Alt text](/screenshots/Standings.png?raw=true "Standings.png")
 
 ![Alt text](/screenshots/Standings-Completed.png?raw=true "Standings-Completed.png") ![Alt text](/screenshots/Help.png?raw=true "Help.png")
 
