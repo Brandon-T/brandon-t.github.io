@@ -1,4 +1,4 @@
-# ![Alt text](/install/small.png?raw=true "small.png") XIO.SoccerPool
+<img src="/images/small.png" alt="Small.png" /> XIO.SoccerPool
 
 A web-page configured for iOS Over-The-Air application installation of the EuroCup SoccerPool application.
 
