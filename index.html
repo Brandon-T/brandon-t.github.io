@@ -41,6 +41,10 @@
 				padding: 15px;
 				font-size: 25px;
 			}
+
+			a {
+			  text-decoration: none; /* no underline */
+			}
 		</style>
 	</head>
 	<body>
@@ -57,10 +61,10 @@
 
 
 		<br /><br />
-		<form id="frm" method="get" action="itms-services://?action=download-manifest&url=https://brandon-t.github.io/install/manifest.plist>
-			<label for="downloadBtn" style="color:white">Euro-Cup v1.0.5</label>
-		    <button id="downloadBtn" type="submit">Download</button>
-		</form>
+		<label for="downloadBtn" style="color:white">Euro-Cup v1.0.5</label>
+		<a href="itms-services://?action=download-manifest&url=https://brandon-t.github.io/install/manifest.plist">
+		    <button id="downloadBtn">Download</button>
+		</a>
 
 
 		<br /><br />
