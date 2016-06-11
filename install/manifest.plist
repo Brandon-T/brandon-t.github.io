@@ -13,6 +13,18 @@
 					<key>url</key>
 					<string>https://brandon-t.github.io/install/SoccerPool.ipa</string>
 				</dict>
+				<dict>
+					<key>kind</key>
+					<string>display-image</string>
+					<key>url</key>
+					<string>https://i.imgur.com/6PaXAba.png</string>
+				</dict>
+				<dict>
+					<key>kind</key>
+					<string>full-size-image</string>
+					<key>url</key>
+					<string>https://i.imgur.com/Hia2oo5.png</string>
+				</dict>
 			</array>
 			<key>metadata</key>
 			<dict>
