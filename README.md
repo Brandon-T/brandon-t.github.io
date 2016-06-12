@@ -8,4 +8,4 @@ A web-page configured for iOS Over-The-Air application installation of the EuroC
 
 <img src="/screenshots/Graph.png" width="320" height="480" alt="Graph.png" /> <img src="/screenshots/Graph-More.png" width="320" height="480" alt="Graph-More.png" />
 
-<img src="/screenshots/Help.png" width="320" height="480" alt="Help.png" />
+<img src="/screenshots/PlayerInfo.png" width="320" height="480" alt="PlayerInfo.png" /> <img src="/screenshots/Help.png" width="320" height="480" alt="Help.png" />
