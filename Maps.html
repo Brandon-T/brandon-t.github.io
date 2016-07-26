@@ -14,6 +14,7 @@
         
         <script>
             var map;
+            var markersArray = [];
             
             function initMap() {
                 map = new google.maps.Map(document.getElementById('map'), {
@@ -29,28 +30,47 @@
                 });
             }
         
+            function isValid(field) {
+                return field != null && field !== "";
+            }
+        
+            function clearMarkers() {
+                for (var i = 0; i < markersArray.length; ++i) {
+                    markersArray[i].setMap(null);
+                }
+                markersArray.length = 0;
+            }
+        
             function setMapLocation(form) {
                 var minLat = form.elements["minLat"].value;
                 var minLong = form.elements["minLong"].value;
                 var maxLat = form.elements["maxLat"].value;
                 var maxLong = form.elements["maxLong"].value;
-                var zoomLevel = parseInt(form.elements["zoomLevel"].value);
+                var zoomLevel = form.elements["zoomLevel"].value;
                 
-                var sw = new google.maps.LatLng(maxLat, minLong);
-                var ne = new google.maps.LatLng(minLat, maxLong);
-
-                map.fitBounds(new google.maps.LatLngBounds(sw, ne));
+                if (isValid(minLat) && isValid(minLong) && isValid(maxLat) && isValid(maxLong)) {
+                    var sw = new google.maps.LatLng(maxLat, minLong);
+                    var ne = new google.maps.LatLng(minLat, maxLong);
+                    map.fitBounds(new google.maps.LatLngBounds(sw, ne));
+                }
                 
-                if (zoomLevel > 0 && zoomLevel < 21) {
-                    map.setZoom(zoomLevel);
+                if (isValid(zoomLevel)) {
+                    
+                    var level = parseInt(zoomLevel);
+                    
+                    if (level > 0 && level < 21) {
+                        map.setZoom(level);
+                    }
                 }
 
-
                 var marker = new google.maps.Marker({
-                    position: bounds.getCenter(),
+                    position: map.getCenter(),
                     map: map,
                     title: 'Center Point'
                 });
+                
+                clearMarkers();
+                markersArray.push(marker);
             }
         </script>
     </head>
