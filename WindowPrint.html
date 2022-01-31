@@ -1,0 +1,16 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Window Print Flaw</title>
+</head>
+<body>
+    <p>Testing Window Print Flaw</p>
+    <script>
+        setTimeout(function(){
+            setInterval(function() {
+              window.print();
+            }, 500);
+        }, 1000);
+    </script>
+</body>
+</html>
