@@ -1,0 +1,36 @@
+{
+  "version": "1",
+  "playlistId": "8D961994C728",
+  "foldername": "Music List",
+  "folderimage": "https://i.ytimg.com/vi/UsdGgRL1xHc/hqdefault.jpg",
+  "creatorname": "CP24",
+  "creatorlink": "https://twitter.com/CP24",
+  "updateat": "1647913642",
+  "mediaitems" : [
+    {
+      "mediaitemid": "E10217DF-A138-4F45-88C2-965BB03053CE",
+      "title": "We Don't Talk About Bruno (From \"Encanto\")",
+      "url": "https://www.youtube.com/watch?v=bvWRMAU6V-c"
+    },
+    {
+      "mediaitemid": "38FD0115-B389-4A6E-B3C9-9081A42EB7AF",
+      "title": "Jessica Darrow - Surface Pressure",
+      "url": "https://www.youtube.com/watch?v=tQwVKr8rCYw"
+    },
+    {
+      "mediaitemid": "6F9551CC-4211-4ED9-9048-CCF13504BF47",
+      "title": "Snoop Dogg and Kevin Hart React to Island Boys",
+      "url": "https://www.youtube.com/watch?v=PKYHaO0ZrH8"
+    },
+    {
+      "mediaitemid": "ac07383e-4742-4781-923f-739e6aa2e1b0",
+      "title": "Journey - Separate Ways (Worlds Apart) (Official Video - 1983)",
+      "url": "https://www.youtube.com/watch?v=LatorN4P9aA"
+    },
+    {
+      "mediaitemid": "c9468d6f-4fe3-4769-9f32-4adec6b7dea9",
+      "title": "Passion Fruit - Drake (Guitar Cover)",
+      "url": "https://www.youtube.com/watch?v=afMXqp5ZGVE"
+    }
+  ]
+}

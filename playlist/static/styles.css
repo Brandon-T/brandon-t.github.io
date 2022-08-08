@@ -1,0 +1,111 @@
+#frame {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+
+    background: linear-gradient(
+        167.97deg,
+        #17171F 0.05%,
+        #17171F 17.13%,
+        #0E0E37 32.01%,
+        #0A0047 38.93%,
+        #270D77 57.05%,
+        #56108D 74.62%,
+        #8E0FA3 89.97%,
+        #CA0C7F 100.05%
+    );
+}
+
+#container {
+    position: absolute;
+    left: 26px;
+    top: 30px;
+}
+
+#logo {
+    position: absolute;
+    left: 2px;
+    top: 0px;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 32px;
+
+    position: absolute;
+    left: 6px;
+    top: 93px;
+}
+
+#graphic {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+
+    flex-grow: 1;
+}
+
+#info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+}
+
+#title {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18pt;
+    line-height: 32px;
+    /* or 133% */
+
+    text-align: center;
+    color: #FFFFFF;
+}
+
+#subtitle {
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11pt;
+    line-height: 19px;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+}
+
+#open_button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 22px;
+    gap: 7px;
+
+    width: 50%;
+    height: 44px;
+    background: #4C54D2;
+    border-radius: 48px;
+    border: none;
+}
+
+#open_button_title {
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12pt;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+}
