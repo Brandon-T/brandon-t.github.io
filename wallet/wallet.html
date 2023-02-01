@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Hello</title>
+    </head>
+    <body>
+        <p>
+            Hello
+        </p>
+        
+        <script type="text/javascript">
+        window.onerror = function(message, url, lineNumber) {
+            document.querySelector('p').innerHTML += "<br />";
+            document.querySelector('p').innerText += message + " on: " + lineNumber;
+            console.log(message, lineNumber);
+            return false;
+        }
+        </script>
+    </body>
+</html>
