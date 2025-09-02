@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blob PDF Download</title>
+  <style>
+    :root {
+      --fg: #0e1116;
+      --muted: #5b636c;
+      --bg: #f7f7f8;
+      --card: #ffffff;
+      --accent: #2563eb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--fg);
+    }
+
+    .wrap {
+      max-width: 880px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, .04);
+      padding: 1.25rem;
+    }
+
+    h1 {
+      margin: 0 0 .75rem;
+      font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+    }
+
+    p {
+      margin: .25rem 0 .75rem;
+      color: var(--muted);
+    }
+
+    .row {
+      display: flex;
+      gap: .75rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    input[type="text"] {
+      flex: 1 1 320px;
+      padding: .65rem .75rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      font-size: 0.95rem;
+    }
+
+    button,
+    a.button {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      padding: .65rem .9rem;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: #111827;
+    }
+
+    .viewer {
+      margin-top: 1rem;
+      height: 70vh;
+      width: 100%;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    footer {
+      margin-top: 1rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    code {
+      background: #f1f5f9;
+      padding: .15rem .35rem;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Blob PDF Download</h1>
+      <p>This page generates a tiny, valid PDF entirely in the browser, turns it into a <code>Blob</code>, and exposes
+        it for download and preview.</p>
+
+      <div class="row" role="group" aria-label="PDF text controls">
+        <input id="pdfText" type="text" value="Blob PDF" aria-label="PDF text" />
+        <button id="makePdfBtn" type="button" title="Rebuild the PDF">Build PDF</button>
+        <a id="downloadLink" class="button" download="hello.pdf" href="#" title="Download the generated PDF">Download
+          PDF</a>
+      </div>
+
+      <iframe id="pdfViewer" class="viewer" title="PDF preview"></iframe>
+    </div>
+  </div>
+
+  <script>
+    function createMinimalPdfBlob(text) {
+      const escapePdfString = (s) => s
+        .replace(/\\/g, "\\\\")
+        .replace(/\(/g, "\\(")
+        .replace(/\)/g, "\\)")
+        .replace(/\r?\n/g, " ");
+
+      const pageW = 612, pageH = 792;   // Letter size in points
+      const content = `BT /F1 24 Tf 72 ${pageH - 72 - 24} Td (${escapePdfString(text)}) Tj ET\n`;
+
+      const obj1 = "1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n";
+      const obj2 = "2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n";
+      const obj3 = `3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pageW} ${pageH}] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>\nendobj\n`;
+      const obj4 = "4 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\nendobj\n";
+      const obj5 = `5 0 obj\n<< /Length ${content.length} >>\nstream\n${content}endstream\nendobj\n`;
+
+      let pdf = "%PDF-1.4\n"; // header
+      const offsets = [0];       // xref slot 0 is the free object
+
+      const pushWithOffset = (chunk) => { offsets.push(pdf.length); pdf += chunk; };
+      pushWithOffset(obj1);
+      pushWithOffset(obj2);
+      pushWithOffset(obj3);
+      pushWithOffset(obj4);
+      pushWithOffset(obj5);
+
+      const xrefOffset = pdf.length;
+      const pad10 = (n) => String(n).padStart(10, "0");
+
+      pdf += "xref\n0 6\n";
+      pdf += "0000000000 65535 f \n"; // free object
+      for (let i = 1; i <= 5; i++) {
+        pdf += `${pad10(offsets[i])} 00000 n \n`;
+      }
+
+      pdf += `trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n${xrefOffset}\n%%EOF`;
+
+      const bytes = new TextEncoder().encode(pdf);
+      return new Blob([bytes], { type: "application/pdf" });
+    }
+
+    let currentUrl = null;
+    function buildAndShowPdf() {
+      if (currentUrl) URL.revokeObjectURL(currentUrl);
+      const text = document.getElementById('pdfText').value || 'Hello from GitHub Pages!';
+      const blob = createMinimalPdfBlob(text);
+      currentUrl = URL.createObjectURL(blob);
+
+      const dl = document.getElementById('downloadLink');
+      dl.href = currentUrl;
+      dl.download = (text.trim() ? text.trim().slice(0, 40) : 'hello') + '.pdf';
+
+      const frame = document.getElementById('pdfViewer');
+      frame.src = currentUrl;
+    }
+
+    document.getElementById('makePdfBtn').addEventListener('click', buildAndShowPdf);
+    window.addEventListener('beforeunload', () => { if (currentUrl) URL.revokeObjectURL(currentUrl); });
+
+    // Build on first load
+    buildAndShowPdf();
+  </script>
+</body>
+
+</html>
